@@ -12,19 +12,44 @@
       <option value="webDesigner">webDesigner</option>
     </select>
 
+    <div class="terms">
+      <input type="checkbox" v-model="terms" required/>
+      <label>Accapt terms and conditions</label>
+    </div>
+
+
+    <div>
+      <input type="checkbox" value="coco" v-model="names"/>
+      <label>Coco</label>
+    </div>
+    <div>
+      <input type="checkbox" value="like" v-model="names"/>
+      <label>Like</label>
+    </div>
+    <div>
+      <input type="checkbox" value="pyx" v-model="names"/>
+      <label>Pyx</label>
+    </div>
+
   </form>
   <p>email: {{email}}</p>
   <p>password: {{password}}</p>
   <p>role: {{role}}</p>
+  <p>terms accepted: {{terms}}</p>
+  <p>names: {{names}}</p>
+
 </template>
 
 <script>
 export default {
   data() {
     return{
-      email: "coco",
+      email: "",
       password: '',
-      role: 'designer'
+      role: 'designer',
+      terms : true,
+      names: []
+
     }
 
 
