@@ -6,17 +6,25 @@
     <label>password:</label>
     <input type="password" required v-model="password" />
 
+    <label>role:</label>
+    <select v-model="role">
+      <option value="developer">developer</option>
+      <option value="webDesigner">webDesigner</option>
+    </select>
+
   </form>
   <p>email: {{email}}</p>
   <p>password: {{password}}</p>
+  <p>role: {{role}}</p>
 </template>
 
 <script>
 export default {
   data() {
     return{
-      email: "",
-      password: ''
+      email: "coco",
+      password: '',
+      role: 'designer'
     }
 
 
