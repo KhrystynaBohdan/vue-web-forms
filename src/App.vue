@@ -1,16 +1,13 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+<SingUpForm />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 
+import SingUpForm from "./components/SingUpForm";
 export default {
   name: "App",
-  components: {
-    HelloWorld,
-  },
+  components: { SingUpForm },
 };
 </script>
 
@@ -22,5 +19,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+body {
+  margin: 0;
+  background: cadetblue;
 }
 </style>
