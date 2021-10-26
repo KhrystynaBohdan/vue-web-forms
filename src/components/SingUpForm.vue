@@ -9,7 +9,7 @@
     <label>Skills:</label>
     <input type="text" required v-model="tempSkills" @keypress="addSkill" />
     <div v-for="skill in skills" :key="skill" class="pill">
-      {{ skill }}
+      <span v-on:click="deleteSkills(skill)">{{ skill }}</span>
     </div>
 
     <label>role:</label>
@@ -40,19 +40,24 @@ export default {
       role: "designer",
       terms: true,
       tempSkills: "",
-      skills: []
+      skills: [],
     };
 
   },
   methods: {
     addSkill(e) {
-      if (e.key === ',' && this.tempSkills) {
+      if (e.key === "," && this.tempSkills) {
         //we cannot add duplicate skills
-        if(!this.skills.includes(this.tempSkills)){
-          this.skills.push(this.tempSkills)
+        if (!this.skills.includes(this.tempSkills)) {
+          this.skills.push(this.tempSkills);
         }
-        this.tempSkills = ''
+        this.tempSkills = "";
       }
+    },
+    deleteSkills(skill) {
+      this.skills = this.skills.filter((item) => {
+        return skill = !item;
+      });
     }
   }
 };
