@@ -6,6 +6,12 @@
     <label>password:</label>
     <input type="password" required v-model="password" />
 
+    <label>Skills:</label>
+    <input type="skills" required v-model="tempSkills" @keypress="addSkill" />
+    <div v-for="skill in skills" :key="skill" class="pill">
+      {{ skill }}
+    </div>
+
     <label>role:</label>
     <select v-model="role">
       <option value="developer">developer</option>
@@ -13,46 +19,38 @@
     </select>
 
     <div class="terms">
-      <input type="checkbox" v-model="terms" required/>
+      <input type="checkbox" v-model="terms" required />
       <label>Accapt terms and conditions</label>
     </div>
 
-
-    <div>
-      <input type="checkbox" value="coco" v-model="names"/>
-      <label>Coco</label>
-    </div>
-    <div>
-      <input type="checkbox" value="like" v-model="names"/>
-      <label>Like</label>
-    </div>
-    <div>
-      <input type="checkbox" value="pyx" v-model="names"/>
-      <label>Pyx</label>
-    </div>
-
   </form>
-  <p>email: {{email}}</p>
-  <p>password: {{password}}</p>
-  <p>role: {{role}}</p>
-  <p>terms accepted: {{terms}}</p>
-  <p>names: {{names}}</p>
+  <p>email: {{ email }}</p>
+  <p>password: {{ password }}</p>
+  <p>role: {{ role }}</p>
+  <p>terms accepted: {{ terms }}</p>
 
 </template>
 
 <script>
 export default {
   data() {
-    return{
+    return {
       email: "",
-      password: '',
-      role: 'designer',
-      terms : true,
-      names: []
+      password: "",
+      role: "designer",
+      terms: true,
+      tempSkills: "",
+      skills: []
+    };
 
+  },
+  methods: {
+    addSkill(e) {
+      if (e.key === ',' && this.tempSkills) {
+       this.skills.push(this.tempSkills)
+        this.tempSkills = ''
+      }
     }
-
-
   }
 };
 </script>
