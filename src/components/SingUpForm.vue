@@ -7,7 +7,7 @@
     <input type="password" required v-model="password" />
 
     <label>Skills:</label>
-    <input type="skills" required v-model="tempSkills" @keypress="addSkill" />
+    <input type="text" required v-model="tempSkills" @keypress="addSkill" />
     <div v-for="skill in skills" :key="skill" class="pill">
       {{ skill }}
     </div>
@@ -47,7 +47,10 @@ export default {
   methods: {
     addSkill(e) {
       if (e.key === ',' && this.tempSkills) {
-       this.skills.push(this.tempSkills)
+        //we cannot add duplicate skills
+        if(!this.skills.includes(this.tempSkills)){
+          this.skills.push(this.tempSkills)
+        }
         this.tempSkills = ''
       }
     }
